@@ -1,0 +1,7 @@
+{
+  "name": "Invest maooe - Gestão Inteligente",
+  "description": "Uma plataforma completa de controle financeiro pessoal e empresarial com painéis interativos, agente inteligente e lembretes.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
