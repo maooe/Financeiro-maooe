@@ -1,5 +1,4 @@
-/// <reference types="vite/client" />
-
+// Fix: Removed 'vite/client' reference as it was not found in the environment and defined ImportMetaEnv manually.
 /**
  * Declares the process.env variables injected by Vite's define configuration.
  */
@@ -12,8 +11,14 @@ declare namespace NodeJS {
 }
 
 /**
+ * Manually defined ImportMetaEnv since 'vite/client' types are missing.
+ */
+interface ImportMetaEnv {
+  readonly [key: string]: string | boolean | undefined;
+}
+
+/**
  * Extends ImportMeta to include the env property with the ImportMetaEnv type.
- * The ImportMetaEnv type is provided by the 'vite/client' reference above.
  */
 interface ImportMeta {
   readonly env: ImportMetaEnv;
