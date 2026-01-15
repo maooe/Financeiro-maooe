@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <title>MAOOE | Google Cloud Terminal</title>
+    <style>
+      body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #050505; }
+      .loading {
+        color: white; font-family: sans-serif; display: flex; align-items: center; 
+        justify-content: center; height: 100vh; flex-direction: column; gap: 20px;
+      }
+      .spinner {
+        width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
+        border-top-color: #6366f1; border-radius: 50%; animation: spin 1s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div id="loader" class="loading">
+      <div class="spinner"></div>
+      <p style="letter-spacing: 0.2em; font-weight: bold; font-size: 12px;">INICIALIZANDO TERMINAL MAOOE...</p>
+    </div>
+    
+    <script>
+      /**
+       * INSTRUÇÃO IMPORTANTE:
+       * Mude APENAS a linha abaixo (VERCEL_URL).
+       * NÃO altere o teste 'if' abaixo dela.
+       */
+      const VERCEL_URL = "SUA_URL_DO_VERCEL_AQUI"; 
+      
+      const SCRIPT_URL = window.location.href.split('?')[0];
+      
+      // Se a variável VERCEL_URL ainda for o texto padrão, mostra o aviso.
+      // Se for diferente (seu link), ele faz o redirecionamento automático.
+      if (VERCEL_URL === "SUA_URL_DO_VERCEL_AQUI" || VERCEL_URL === "") {
+        document.getElementById('loader').innerHTML = `
+          <h1 style="color: #6366f1; font-family: sans-serif; letter-spacing: -1px;">MAOOE CLOUD</h1>
+          <p style="color: #666; max-width: 400px; text-align: center; font-family: sans-serif; font-size: 14px; line-height: 1.6;">
+            O servidor do Google está ativo!<br><br>
+            Agora, no arquivo <b>index.html</b> (este que você está lendo), 
+            mude o texto <span style="color:white; background: #333; padding: 2px 6px; border-radius: 4px;">SUA_URL_DO_VERCEL_AQUI</span> 
+            pelo link do seu site MAOOE.
+          </p>
+        `;
+      } else {
+        // Redireciona enviando a URL da planilha como parâmetro
+        window.location.href = VERCEL_URL + "?script=" + encodeURIComponent(SCRIPT_URL);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <style>
+      body { 
+        margin: 0; background: #050505; color: white; font-family: sans-serif; 
+        display: flex; flex-direction: column; align-items: center; justify-content: center; 
+        height: 100vh; text-align: center; 
+      }
+      .spinner { 
+        width: 50px; height: 50px; border: 3px solid rgba(99, 102, 241, 0.1); 
+        border-top-color: #6366f1; border-radius: 50%; animation: spin 0.8s linear infinite; 
+        margin-bottom: 25px; box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .msg { letter-spacing: 0.4em; font-size: 9px; color: #6366f1; font-weight: 900; text-transform: uppercase; }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <div class="spinner"></div>
+      <div class="msg">CONECTANDO AO TERMINAL MAOOE</div>
+    </div>
+
+    <script>
+      // ============================================================
+      // CONFIGURAÇÃO OBRIGATÓRIA:
+      // ============================================================
+      const VERCEL_URL = "https://porking.vercel.app"; 
+      
+      const SCRIPT_URL = window.location.href.split('?')[0];
+
+      if (VERCEL_URL.length > 5 && !VERCEL_URL.includes("SUA_URL")) {
+        const target = VERCEL_URL.endsWith('/') ? VERCEL_URL.slice(0, -1) : VERCEL_URL;
+        window.location.href = target + "?script=" + encodeURIComponent(SCRIPT_URL);
+      } else {
+        document.getElementById('content').innerHTML = `
+          <h2 style="color:#6366f1;">CONFIGURAÇÃO PENDENTE</h2>
+          <p style="color:#666; font-size:12px;">Defina a variável VERCEL_URL no código deste arquivo.</p>
+        `;
+      }
+    </script>
+  </body>
+</html>
