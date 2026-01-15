@@ -190,4 +190,16 @@ const App: React.FC = () => {
               </>
             )}
             {activeTab === 'calendar' && <CalendarView appointments={appointments} onUpdateAppointments={setAppointments} />}
-            {activeTab === 'accounts' && <AccountsForm accounts={accounts} onAdd={(a) => setAccounts([a, ...accounts])} onDelete={(id) => setAccounts(accounts.
+            {activeTab === 'accounts' && <AccountsForm accounts={accounts} onAdd={(a) => setAccounts([a, ...accounts])} onDelete={(id) => setAccounts(accounts.filter(a => a.id !== id))} />}
+            {activeTab === 'income' && <IncomeList incomes={incomes} onAdd={(i) => setIncomes([i, ...incomes])} />}
+            {activeTab === 'notes' && <PostIts notes={notes} setNotes={setNotes} />}
+            {activeTab === 'profile' && <ProfileEdit user={user} setUser={setUser} />}
+          </div>
+        </main>
+        <AIAgent appData={{ accounts, incomes, appointments }} />
+      </div>
+    </div>
+  );
+};
+
+export default App;
