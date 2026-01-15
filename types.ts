@@ -51,6 +51,14 @@ export interface Note {
   color: string;
 }
 
+export interface Appointment {
+  id: string;
+  date: string; // Formato YYYY-MM-DD
+  title: string;
+  time: string;
+  category: string;
+}
+
 export interface Theme {
   id: string;
   name: string;

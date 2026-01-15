@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { LayoutDashboard, Receipt, TrendingUp, StickyNote, UserCircle, LogOut, Zap } from 'lucide-react';
+import { LayoutDashboard, Receipt, TrendingUp, StickyNote, UserCircle, LogOut, Zap, Calendar as CalendarIcon } from 'lucide-react';
 
 interface SidebarProps {
   collapsed: boolean;
@@ -14,6 +14,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ collapsed, setCollapsed, activeTab, setActiveTab, user, onLogout }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Painel', icon: LayoutDashboard },
+    { id: 'calendar', label: 'Agenda Corporativa', icon: CalendarIcon },
     { id: 'accounts', label: 'Contas a Pagar', icon: Receipt },
     { id: 'income', label: 'Receitas', icon: TrendingUp },
     { id: 'notes', label: 'Sinais', icon: StickyNote },

@@ -1,8 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { Calendar as CalendarIcon, Clock, CloudSun } from 'lucide-react';
+import { Calendar as CalendarIcon, Clock, CloudSun, ChevronRight } from 'lucide-react';
 
-const CalendarWidget: React.FC = () => {
+interface CalendarWidgetProps {
+  onNavigate?: () => void;
+}
+
+const CalendarWidget: React.FC<CalendarWidgetProps> = ({ onNavigate }) => {
   const [time, setTime] = useState(new Date());
   
   useEffect(() => {
@@ -19,14 +23,21 @@ const CalendarWidget: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div className="bento-card p-6 border-white/10 flex items-center space-x-4">
-        <div className="p-3 bg-green-500/10 text-green-400 rounded-xl">
-          <CalendarIcon size={24} />
+      {/* Widget Clicável */}
+      <div 
+        onClick={onNavigate}
+        className="bento-card p-6 border-white/10 flex items-center justify-between group cursor-pointer hover:border-indigo-500/40 transition-all hover:bg-white/[0.02]"
+      >
+        <div className="flex items-center space-x-4">
+          <div className="p-3 bg-green-500/10 text-green-400 rounded-xl group-hover:scale-110 transition-transform">
+            <CalendarIcon size={24} />
+          </div>
+          <div>
+            <p className="text-[9px] font-black text-theme-muted uppercase tracking-widest">Calendário Ativo</p>
+            <p className="text-sm font-bold text-theme-main capitalize">{formattedDate}</p>
+          </div>
         </div>
-        <div>
-          <p className="text-[9px] font-black text-theme-muted uppercase tracking-widest">Calendário</p>
-          <p className="text-sm font-bold text-theme-main capitalize">{formattedDate}</p>
-        </div>
+        <ChevronRight size={16} className="text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0" />
       </div>
 
       <div className="bento-card p-6 border-white/10 flex items-center space-x-4">
